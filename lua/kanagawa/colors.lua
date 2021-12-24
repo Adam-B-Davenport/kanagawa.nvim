@@ -3,11 +3,11 @@ local config = require("kanagawa").config
 local colors = {
 
     -- Bg Shades
-    sumiInk0      = "#16161D",
-    sumiInk1      = "#1F1F28",
-    sumiInk2      = "#2A2A37",
-    sumiInk3      = "#363646",
-    sumiInk4      = "#54546D",
+    sumiInk0      = "#1d2021",
+    sumiInk1      = "#282828",
+    sumiInk2      = "#504945",
+    sumiInk3      = "#665c54",
+    sumiInk4      = "#7c6f64",
 
     -- Popup and Floats
     waveBlue1     = "#223249",
@@ -50,12 +50,15 @@ local colors = {
     boatYellow1   = "#938056",
     boatYellow2   = "#C0A36E",
     carpYellow    = "#E6C384",
+    springYellow  = "#fabd2f",
 
     sakuraPink    = "#D27E99",
     waveRed       = "#E46876",
     peachRed      = "#FF5D62",
     surimiOrange  = "#FFA066",
     katanaGray    = "#717C7C",
+
+    summerGreen   = "#b8bb26"
 }
 
 for name, color in pairs(config.colors) do
@@ -70,8 +73,8 @@ colors.bg_light2 = colors.sumiInk4
 colors.bg_light3 = colors.springViolet1
 
 -- bg_menu     = palette.abyssBlue
-colors.bg_menu = colors.waveBlue1
-colors.bg_menu_sel = colors.waveBlue2
+colors.bg_menu = colors.sumiInk2
+colors.bg_menu_sel = colors.sumiInk4
 
 colors.bg_status = colors.sumiInk0
 colors.bg_visual = colors.waveBlue1
@@ -87,14 +90,14 @@ colors.fg = colors.fujiWhite -- Default Foreground, Caret, Delimiters, Operators
 
 colors.co = colors.surimiOrange -- Boolean, Constants, XML Attributes, Markup Link Url
 colors.st = colors.springGreen -- Strings,
-colors.nu = colors.sakuraPink -- Numbers
+colors.nu = colors.dragonBlue -- Numbers
 colors.id = colors.carpYellow -- Identifier
-colors.fn = colors.crystalBlue -- Functions, Methods, Attribute IDs, Headings
-colors.sm = colors.oniViolet -- Statement: Label, Conditional, Repeat
-colors.kw = colors.oniViolet -- Keywords, Exceptions
+colors.fn = colors.summerGreen -- Functions, Methods, Attribute IDs, Headings
+colors.sm = colors.autumnRed -- Statement: Label, Conditional, Repeat
+colors.kw = colors.autumnRed -- Keywords, Exceptions
 colors.op = colors.boatYellow2 -- Operator
 colors.pp = colors.surimiOrange -- PreProc: Include, Define, Macro, PreCondit
-colors.ty = colors.waveAqua2 -- Type: StroareClass, Structure, Typedef
+colors.ty = colors.springYellow -- Type: StroareClass, Structure, Typedef
 colors.sp = colors.springBlue -- Special: Tag, Delimiter, SpecialComment, Debug, SpecialChar, Builtin
 colors.sp2 = colors.waveRed -- Special Variables (cls, self, etc...)
 colors.sp3 = colors.peachRed
