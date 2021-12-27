@@ -1,3 +1,4 @@
+A fork of the kanagawa color scheme https://github.com/rebelot/kanagawa.nvim
 <p align="center">
   <h2 align="center">🌊 KANAGAWA.nvim 🌊</h2>
 </p>
@@ -17,7 +18,7 @@
 Download with your favorite package manager.
 
 ```lua
-use "rebelot/kanagawa.nvim"
+use "Adam-B-Davenport/kanagawa.nvim"
 ```
 
 ## Requirements
