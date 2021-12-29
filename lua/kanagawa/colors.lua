@@ -1,6 +1,4 @@
-local config = require("kanagawa").config
-
-local colors = {
+local palette_colors = {
 
     -- Bg Shades
     sumiInk0      = "#1d2021",
@@ -61,68 +59,17 @@ local colors = {
     summerGreen   = "#b8bb26"
 }
 
-for name, color in pairs(config.colors) do
-    colors[name] = color
+local M = {}
+
+--- generate color table
+-- @param config config options containing colors and theme fields (optional)
+-- @return table of palette colors and theme colors merged with config.colors
+function M.setup(config)
+    config = vim.tbl_extend("force", require("kanagawa").config, config or {})
+    local colors = vim.tbl_extend("force", palette_colors, config.colors)
+    local theme = require("kanagawa.themes")[config.theme](colors)
+    theme = vim.tbl_extend("force", theme, config.colors)
+    return vim.tbl_extend("force", theme, colors)
 end
 
-colors.bg = colors.sumiInk1 -- Default Background
-colors.bg_dark = colors.sumiInk0
-colors.bg_light0 = colors.sumiInk2
-colors.bg_light1 = colors.sumiInk3
-colors.bg_light2 = colors.sumiInk4
-colors.bg_light3 = colors.springViolet1
-
--- bg_menu     = palette.abyssBlue
-colors.bg_menu = colors.sumiInk2
-colors.bg_menu_sel = colors.sumiInk4
-
-colors.bg_status = colors.sumiInk0
-colors.bg_visual = colors.waveBlue1
-colors.bg_search = colors.waveBlue2
-
-colors.fg_border = colors.sumiInk4
-colors.fg_dark = colors.oldWhite
-colors.fg_reverse = colors.waveBlue1
-
-colors.fg_comment = colors.fujiGray -- Comments, Invisibles, Line Highlighting
-colors.fg = colors.fujiWhite -- Default Foreground, Caret, Delimiters, Operators
--- fg_light   = palette.waveBlue2     -- Light Foreground (Not often used)
-
-colors.co = colors.surimiOrange -- Boolean, Constants, XML Attributes, Markup Link Url
-colors.st = colors.springGreen -- Strings,
-colors.nu = colors.dragonBlue -- Numbers
-colors.id = colors.carpYellow -- Identifier
-colors.fn = colors.summerGreen -- Functions, Methods, Attribute IDs, Headings
-colors.sm = colors.autumnRed -- Statement: Label, Conditional, Repeat
-colors.kw = colors.autumnRed -- Keywords, Exceptions
-colors.op = colors.boatYellow2 -- Operator
-colors.pp = colors.surimiOrange -- PreProc: Include, Define, Macro, PreCondit
-colors.ty = colors.springYellow -- Type: StroareClass, Structure, Typedef
-colors.sp = colors.springBlue -- Special: Tag, Delimiter, SpecialComment, Debug, SpecialChar, Builtin
-colors.sp2 = colors.waveRed -- Special Variables (cls, self, etc...)
-colors.sp3 = colors.peachRed
-colors.br = colors.springViolet2 -- TSPunct*
-colors.re = colors.boatYellow2 -- Regular Expressions, Escape Characters
-colors.dep = colors.katanaGray -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-
-colors.diag = {
-    error = colors.samuraiRed,
-    warning = colors.roninYellow,
-    info = colors.dragonBlue,
-    hint = colors.waveAqua1,
-}
-
-colors.diff = {
-    add = colors.winterGreen,
-    delete = colors.winterRed,
-    change = colors.winterBlue,
-    text = colors.winterYellow,
-}
-
-colors.git = {
-    added = colors.autumnGreen,
-    removed = colors.autumnRed,
-    changed = colors.autumnYellow,
-}
-
-return colors
+return M

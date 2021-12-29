@@ -1,15 +1,6 @@
 local M = {}
 
-function M.load()
-    local hlgroups = require("kanagawa.hlgroups")
-
-    if vim.g.colors_name then
-        vim.cmd("hi clear")
-    end
-
-    vim.g.colors_name = "kanagawa"
-    vim.o.termguicolors = true
-
+local function set_highlights(hlgroups)
     for group, colors in pairs(hlgroups) do
         if not vim.tbl_isempty(colors) then
             if colors.link then
@@ -25,6 +16,7 @@ function M.load()
     end
 end
 
+--- default config
 M.config = {
     undercurl = true,
     commentStyle = "italic",
@@ -38,11 +30,29 @@ M.config = {
     transparent = false,
     colors = {},
     overrides = {},
-    -- bg_contrast = 'light'
+    theme = "default" -- only one theme atm
 }
 
-function M.setup(opts)
-    M.config = vim.tbl_extend("force", M.config, opts or {})
+--- update global configuration with user settings
+--@param config user configuration
+--@return nil
+function M.setup(config)
+    M.config = vim.tbl_extend("force", M.config, config or {})
+end
+
+--- load the colorscheme
+function M.load()
+    if vim.g.colors_name then
+        vim.cmd("hi clear")
+    end
+
+    vim.g.colors_name = "kanagawa"
+    vim.o.termguicolors = true
+
+    local colors = require("kanagawa.colors").setup()
+    local hlgroups = require("kanagawa.hlgroups").setup(colors)
+
+    set_highlights(hlgroups)
 end
 
 return M
