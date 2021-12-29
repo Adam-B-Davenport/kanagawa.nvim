@@ -27,7 +27,7 @@ function M.setup(colors, config)
         VertSplit                         = { fg = colors.bg_status, bg = colors.bg_status, style = "NONE" },
         Folded                            = { fg = colors.bg_light3, bg = colors.bg_light0 },
         FoldColumn                        = { fg = colors.bg_light2, bg = colors.bg },
-        SignColumn                        = { fg = colors.comment, bg = colors.bg },
+        SignColumn                        = { fg = colors.fg_comment, bg = colors.bg },
         SignColumnSB                      = { link = "SignColumn" },
         Substitute                        = { fg = colors.fg, bg = colors.git.removed },
         LineNr                            = { fg = colors.bg_light2 },
@@ -260,9 +260,9 @@ function M.setup(colors, config)
         -- NeogitDiffAddHighlight         = {},
 
         -- GitGutter
-        -- GitGutterAdd                   = {},
-        -- GitGutterChange                = {},
-        -- GitGutterDelete                = {},
+        GitGutterAdd                   = { fg = colors.git.added },
+        GitGutterChange                = { fg = colors.git.changed },
+        GitGutterDelete                = { fg = colors.git.removed },
 
         -- GitSigns
         GitSignsAdd                       = { link = "diffAdded" },
