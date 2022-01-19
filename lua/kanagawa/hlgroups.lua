@@ -23,23 +23,23 @@ function M.setup(colors, config)
         EndOfBuffer                       = { fg = colors.bg },
         -- TermCursor                     = {},
         -- TermCursorNC                   = {},
-        ErrorMsg                          = { fg = colors.diag.error, bg = colors.bg },
+        ErrorMsg                          = { fg = colors.diag.error, bg = "NONE" },
         VertSplit                         = { fg = colors.bg_status, bg = colors.bg_status, style = "NONE" },
         Folded                            = { fg = colors.bg_light3, bg = colors.bg_light0 },
-        FoldColumn                        = { fg = colors.bg_light2, bg = colors.bg },
-        SignColumn                        = { fg = colors.fg_comment, bg = colors.bg },
+        FoldColumn                        = { fg = colors.bg_light2, bg = "NONE" },
+        SignColumn                        = { fg = colors.bg_light2, bg = "NONE" },
         SignColumnSB                      = { link = "SignColumn" },
         Substitute                        = { fg = colors.fg, bg = colors.git.removed },
         LineNr                            = { fg = colors.bg_light2 },
-        CursorLineNr                      = { fg = colors.diag.warning, bg = colors.bg, style = "bold" },
+        CursorLineNr                      = { fg = colors.diag.warning, bg = "NONE", style = "bold" },
         MatchParen                        = { fg = colors.diag.warning, bg = "NONE", style = "bold" },
-        ModeMsg                           = { fg = colors.diag.warning, style = "bold", bg = colors.bg },
-        MsgArea                           = { fg = colors.fg, bg = colors.bg },
+        ModeMsg                           = { fg = colors.diag.warning, style = "bold", bg = "NONE" },
+        MsgArea                           = { fg = colors.fg_dark, bg = "NONE" },
         -- MsgSeparator                   = {},
         MoreMsg                           = { fg = colors.diag.info, bg = colors.bg, style = "NONE" },
         NonText                           = { fg = colors.bg_light2 },
         Normal                            = { fg = colors.fg, bg = not config.transparent and colors.bg or "NONE" },
-        NormalNC                          = { link = "Normal" },
+        NormalNC                          = config.dimInactive and { fg = colors.fg_dark, bg = colors.bg_dim } or { link = "Normal" },
         NormalSB                          = { link = "Normal" },
         NormalFloat                       = { fg = colors.fg, bg = colors.bg_dark },
         FloatBorder                       = { fg = colors.fg_border, bg = "NONE" },
@@ -57,14 +57,14 @@ function M.setup(colors, config)
         SpellLocal                        = { style = "undercurl", guisp = colors.diag.warning },
         SpellRare                         = { style = "undercurl", guisp = colors.diag.warning },
         StatusLine                        = { fg = colors.fg_dark, bg = colors.bg_status, style = "NONE" },
-        StatusLineNC                      = { fg = colors.comment, bg = colors.bg_status, style = "NONE" },
+        StatusLineNC                      = { fg = colors.fg_comment, bg = colors.bg_status, style = "NONE" },
         TabLine                           = { bg = colors.bg_dark, fg = colors.bg_light3, style = "NONE" },
         TabLineFill                       = { bg = colors.bg, style = "NONE" },
         TabLineSel                        = { fg = colors.fg_dark, bg = colors.bg_light1, style = "NONE" },
         Title                             = { fg = colors.fn, style = "bold" },
         Visual                            = { bg = colors.bg_visual },
         VisualNOS                         = { link = "Visual" },
-        WarningMsg                        = { bg = colors.diag.warn, fg = colors.fg_dark },
+        WarningMsg                        = { fg = colors.diag.warning, bg='NONE'},
         Whitespace                        = { fg = colors.bg_light2 },
         WildMenu                          = { link = "Pmenu" },
 
@@ -109,7 +109,7 @@ function M.setup(colors, config)
 
         Ignore                            = { link = 'NonText'},
 
-        Error                             = { fg = colors.diag.error, bg = colors.bg },
+        Error                             = { fg = colors.diag.error, bg = "NONE" },
         Todo                              = { fg = colors.fg_reverse, bg = colors.diag.info, style = "bold" },
 
         qfLineNr                          = { link = "lineNr" },
@@ -274,8 +274,8 @@ function M.setup(colors, config)
         TelescopeBorder                   = { link = "FloatBorder" },
 
         -- NvimTree                       = {},
-        NvimTreeNormal                    = { fg = colors.fg, bg = colors.bg },
-        -- NvimTreeNormalNC               = {},
+        NvimTreeNormal                    = { link = "Normal"},
+        NvimTreeNormalNC                  = { link = "NormalNC"},
         NvimTreeRootFolder                = { fg = colors.id, style = "bold" },
         NvimTreeGitDirty                  = { fg = colors.git.changed },
         NvimTreeGitNew                    = { fg = colors.git.added},
@@ -336,6 +336,9 @@ function M.setup(colors, config)
         -- ReferencesIcon                 = {},
         -- TargetWord                     = {},
 
+        -- Floaterm
+        FloatermBorder                    = { fg = colors.bg_light3},
+
         -- NeoVim                         = {},
         healthError                       = { fg = colors.diag.error },
         healthSuccess                     = { fg = colors.springGreen },
@@ -378,10 +381,10 @@ function M.setup(colors, config)
 
         -- Cmp
         CmpDocumentation                  = { fg = colors.fg, bg = colors.bg_popup },
-        CmpDocumentationBorder            = { fg = colors.fg_border, bg = colors.bg },
+        CmpDocumentationBorder            = { fg = colors.fg_border, bg = "NONE" },
 
         CmpItemAbbr                       = { fg = colors.fg, bg = "NONE" },
-        CmpItemAbbrDeprecated             = { fg = colors.comment, bg = "NONE", style = "strikethrough" },
+        CmpItemAbbrDeprecated             = { fg = colors.fg_comment, bg = "NONE", style = "strikethrough" },
 
         CmpItemAbbrMatch                  = { fg = colors.fn, bg = "NONE" },
         CmpItemAbbrMatchFuzzy             = { link = "CmpItemAbbrMatch" },
@@ -389,7 +392,7 @@ function M.setup(colors, config)
         CmpItemKindDefault                = { fg = colors.dep, bg = "NONE" },
         CmpItemMenu                       = { fg = colors.fg_comment, bg = "NONE" },
 
-        CmpItemKindVariable               = { link = "TSVariable" },
+        CmpItemKindVariable               = { fg = colors.fg_dark, bg = "NONE" },
 
         CmpItemKindFunction               = { link = "Function" },
         CmpItemKindMethod                 = { link = "Function" },
@@ -434,6 +437,9 @@ function M.setup(colors, config)
     }
 
     for hl, specs in pairs(config.overrides) do
+        if hlgroups[hl] and not vim.tbl_isempty(specs) then
+            hlgroups[hl].link = nil
+        end
         hlgroups[hl] = vim.tbl_extend("force", hlgroups[hl] or {}, specs)
     end
 
