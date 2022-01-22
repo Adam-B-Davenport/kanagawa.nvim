@@ -65,7 +65,7 @@ return {
     gruvbox = function(colors)
         return {
             bg = colors.sumiInk1, -- Default Background,
-            bg_dim = colors.sumiInk1b,
+            bg_dim = colors.sumiInk1,
             bg_dark = colors.sumiInk0,
             bg_light0 = colors.sumiInk2,
             bg_light1 = colors.sumiInk3,
