@@ -1,16 +1,16 @@
 local palette_colors = {
 
     -- Bg Shades
-    sumiInk0      = "#16161D",
-    sumiInk1b     = "#16161D",
-    sumiInk1      = "#1F1F28",
-    sumiInk2      = "#2A2A37",
-    sumiInk3      = "#363646",
-    sumiInk4      = "#54546D",
+    sumiInk0      = "#1d2021",
+    sumiInk1b     = "#202020",
+    sumiInk1      = "#282828",
+    sumiInk2      = "#504945",
+    sumiInk3      = "#665c54",
+    sumiInk4      = "#7c6f64",
 
     -- Popup and Floats
-    waveBlue1     = "#223249",
-    waveBlue2     = "#2D4F67",
+    waveBlue1     = "#076678",
+    waveBlue2     = "#078698",
 
     -- Diff and Git
     winterGreen   = "#2B3328",
